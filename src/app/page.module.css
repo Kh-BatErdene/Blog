@@ -1,0 +1,38 @@
+#container {
+  max-width: 1917px;
+  width: 100%;
+  margin: auto;
+}
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 100px;
+}
+#search {
+  background-color: gainsboro;
+  padding-left: 8px;
+}
+#footer {
+  width: 1215px;
+}
+.grid1 {
+  width: 290px;
+}
+.footer_child {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#lastpart {
+  display: flex;
+  justify-content: center;
+  background-color: #e8e8ea;
+  padding: 64px;
+}
+.trend {
+  width: 293px;
+  height: 320px;
+}
