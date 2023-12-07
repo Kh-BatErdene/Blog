@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
 import styles from "@/app/page.module.css";
-import data from "@/app/posts/blog.json";
+import data from "@/app/components/blog.json";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);

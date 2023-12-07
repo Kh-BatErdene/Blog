@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "@/app/page.module.css";
 import HomeCard from "./HomeCard";
 
 export default function HomePage() {
@@ -16,8 +15,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="w-screen ">
-      <div className=" w-[1216px] m-auto h-[630px] relative">
+    <div className="w-screen bg-cyan-600 ">
+      <div className=" w-[1216px] m-auto h-[630px] relative overflow-hidden ">
         <div className="w-[300%] m-auto flex overflow-scroll">
           {posts.map((home) => (
             <HomeCard img={home.cover_image} />

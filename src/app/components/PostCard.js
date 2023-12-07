@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/app/page.module.css";
-import LittleBtn from "../components/LittleBtn";
+import LittleBtn from "./LittleBtn";
 
 function PostCard(props) {
   return (
