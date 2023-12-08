@@ -4,9 +4,9 @@ export const Header = () => {
     <div id={styles.header}>
       <img src="logo.svg" />
       <div className="flex gap-10">
-        <p>Home</p>
-        <p>Blog</p>
-        <p>Contact</p>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
       </div>
       <div className="flex">
         <input

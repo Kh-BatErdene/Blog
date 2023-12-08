@@ -16,9 +16,9 @@ export const Footer = () => {
           </div>
           <div className={styles.grid2}>
             <div>
-              <p>Home</p>
-              <p>Blog</p>
-              <p>Contact</p>
+              <a href="/">Home</a>
+              <a href="/blog">Blog</a>
+              <a href="/contact">Contact</a>
             </div>
           </div>
           <img src="Socials.svg" />
@@ -32,7 +32,7 @@ export const Footer = () => {
             <p>Cookie Policy</p>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 };

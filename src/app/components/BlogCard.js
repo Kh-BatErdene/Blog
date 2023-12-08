@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@/app/page.module.css";
-import LittleBtn from "../components/LittleBtn";
+import LittleBtn from "./LittleBtn";
 
-function PostCard(props) {
+function BlogCard(props) {
   return (
     <div>
       <div className={styles.blog}>
@@ -15,4 +15,4 @@ function PostCard(props) {
   );
 }
 
-export default PostCard;
+export default BlogCard;

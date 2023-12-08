@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import PostCard from "./PostCard";
+import PostCard from "@/app/components/PostCard";
 import styles from "@/app/page.module.css";
-import data from "@/app/posts/blog.json";
+import data from "@/app/components/blog.json";
 
-export default function Blog() {
+export default function Home() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pages, setPages] = useState(6);
+  const [pages, setPages] = useState(12);
   const blog = data;
 
   useEffect(() => {
