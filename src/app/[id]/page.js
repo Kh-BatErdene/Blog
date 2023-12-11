@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function PostCard() {
+export default function PostCard2() {
   const { id } = useParams();
 
   const [post, setPost] = useState();
@@ -20,9 +20,33 @@ export default function PostCard() {
     };
     getData();
   }, [id]);
+  console.log(post);
   return (
-    <div>
-      {post && <div dangerouslySetInnerHTML={{ __html: post.body_html }}></div>}
+    <div className="w-[1216px] m-auto">
+      {post && (
+        <h1 className="font-bold text-[36px] m-auto w-[90%] mb-10">
+          {post.title}
+        </h1>
+      )}
+      <div className="flex items-center gap-5 text-[#696A75] font-bold mb-5">
+        {post && (
+          <img
+            className="w-full w-[50px] rounded-full"
+            src={post.user.profile_image}
+          />
+        )}
+        {post && <p>{post.user.name}</p>}
+        {post && <p>{post.readable_publish_date}</p>}
+      </div>
+
+      {post && <img className="w-full rounded-xl" src={post.cover_image} />}
+      {post && (
+        <p className="text-[20px] text-[#3B3C4A] leading-[32px] mt-5 mb-10 w-[1216px] text-justify">
+          {post.body_markdown}
+        </p>
+      )}
+
+      {/* {post && <div dangerouslySetInnerHTML={{ __html: post.body_html }}></div>} */}
     </div>
   );
 }
