@@ -50,7 +50,7 @@ export default function Blog() {
           })}
         </div>
       )}
-      <div className="w-[1216px] flex justify-center m-5">
+      <div className="w-[1216px] flex justify-center m-5 mt-[100px]">
         <button className={styles.more} onClick={SeeMore}>
           Load more...
         </button>

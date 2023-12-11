@@ -6,7 +6,7 @@ import styles from "@/app/page.module.css";
 export default function Trending() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pages, setPages] = useState(9);
+  const [pages, setPages] = useState(4);
 
   useEffect(() => {
     const getData = async () => {
@@ -19,24 +19,15 @@ export default function Trending() {
       setIsLoading(false);
     };
     getData();
-  }, [pages]);
+  }, []);
 
-  function SeeMore() {
-    setPages(pages + 3);
-  }
   return (
     <div className={styles.blog_father}>
       <h1 className="font-bold text-2xl ">Trending</h1>
-      <div className="flex gap-5 mt-8">
-        {" "}
-        {posts.map((data) => {
-          return <div>{data.name}</div>;
-        })}
-      </div>
 
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
-        <div className={styles.blog_card}>
+        <div className="flex gap-4 flex-wrap">
           {posts.map((post) => {
             return (
               <TrendingCard
@@ -48,11 +39,7 @@ export default function Trending() {
           })}
         </div>
       )}
-      <div className="w-[1216px] flex justify-center m-5">
-        <button className={styles.more} onClick={SeeMore}>
-          Load more...
-        </button>
-      </div>
+      <div className="w-[1216px] flex justify-center m-5"></div>
     </div>
   );
 }

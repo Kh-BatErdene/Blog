@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import PostCard from "@/app/components/PostCard";
+import PostCard from "@/app/components/BlogCard";
 import styles from "@/app/page.module.css";
 import data from "@/app/components/blog.json";
+import Link from "next/link";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -41,11 +42,15 @@ export default function Home() {
         <div className={styles.blog_card}>
           {posts.map((post) => {
             return (
-              <PostCard
-                title={post.title}
-                img={post.cover_image}
-                at={post.published_at}
-              />
+              <div key={post.id}>
+                <Link href={`/blog/${post.id}`}>
+                  <PostCard
+                    title={post.title}
+                    img={post.cover_image}
+                    at={post.published_at}
+                  />
+                </Link>
+              </div>
             );
           })}
         </div>

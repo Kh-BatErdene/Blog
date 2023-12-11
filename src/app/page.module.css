@@ -1,19 +1,22 @@
 #container {
-  max-width: 1917px;
+  /* max-width: 1917px; */
   width: 100%;
   margin: auto;
 }
 #header {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 12px;
-  width: 100%;
+  max-width: 1216px;
+  margin: auto;
   margin-bottom: 100px;
 }
 #search {
-  background-color: gainsboro;
-  padding-left: 8px;
+  background-color: #f4f4f5;
+  padding: 3px 3px 3px 8px;
+  outline: none;
+  border-radius: 5px;
 }
 #footer {
   width: 1215px;
@@ -35,6 +38,7 @@
 .blog_father {
   width: 1215px;
   margin: auto;
+  margin-bottom: 100px;
 }
 .blog {
   margin-top: 32px;

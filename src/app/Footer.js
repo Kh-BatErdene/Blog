@@ -15,7 +15,7 @@ export const Footer = () => {
             <p className="mt-2">Phone : 880 123 456 789</p>
           </div>
           <div className={styles.grid2}>
-            <div>
+            <div className="flex flex-col gap-3">
               <a href="/">Home</a>
               <a href="/blog">Blog</a>
               <a href="/contact">Contact</a>
