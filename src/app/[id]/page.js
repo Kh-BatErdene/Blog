@@ -31,7 +31,7 @@ export default function PostCard2() {
       <div className="flex items-center gap-5 text-[#696A75] font-bold mb-5">
         {post && (
           <img
-            className="w-full w-[50px] rounded-full"
+            className=" w-[50px] rounded-full"
             src={post.user.profile_image}
           />
         )}

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import HomeCard from "./HomeCard";
+import Link from "next/link";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -42,18 +43,26 @@ export default function HomePage() {
           }}
         >
           {posts.map((home) => (
-            <HomeCard
-              img={home.cover_image}
-              title={home.title}
-              date={home.readable_publish_date}
-            />
+            <div key={home.id}>
+              <Link href={`/${home.id}`}>
+                <HomeCard
+                  img={home.cover_image}
+                  {...home}
+                  date={home.readable_publish_date}
+                />
+              </Link>
+            </div>
           ))}
           {posts.map((home) => (
-            <HomeCard
-              img={home.cover_image}
-              title={home.title}
-              date={home.readable_publish_date}
-            />
+            <div key={home.id}>
+              <Link href={`/${home.id}`}>
+                <HomeCard
+                  img={home.cover_image}
+                  {...home}
+                  date={home.readable_publish_date}
+                />
+              </Link>
+            </div>
           ))}
         </div>
         <div className="absolute right-0 bottom-0 flex gap-3">

@@ -37,7 +37,7 @@ export default function Home() {
             return (
               <div key={post.id}>
                 <Link href={`/blog/${post.id}`}>
-                  <PostCard {...post} />
+                  <PostCard img={post.cover_image} {...post} />
                 </Link>
               </div>
             );

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import TrendingCard from "@/components/TrendingCard";
 import styles from "@/app/page.module.css";
+import Link from "next/link";
 
 export default function Trending() {
   const [posts, setPosts] = useState([]);
@@ -23,18 +24,18 @@ export default function Trending() {
 
   return (
     <div className={styles.blog_father}>
-      <h1 className="font-bold text-2xl ">Trending</h1>
+      <h1 className="font-bold text-2xl mb-10">Trending</h1>
 
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
         <div className="flex gap-4 flex-wrap">
           {posts.map((post) => {
             return (
-              <TrendingCard
-                title={post.title}
-                img={post.cover_image}
-                at={post.published_at}
-              />
+              <div key={post.id}>
+                <Link href={`/${post.id}`}>
+                  <TrendingCard img={post.cover_image} {...post} />
+                </Link>
+              </div>
             );
           })}
         </div>

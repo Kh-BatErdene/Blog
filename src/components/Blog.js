@@ -10,30 +10,41 @@ export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pages, setPages] = useState(9);
+  const [randomPage, setRandomPage] = useState(1);
   const blog = data;
 
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
       const res = await fetch(
-        `https://dev.to/api/articles?top=3&per_page=${pages}`
+        `https://dev.to/api/articles?top=${randomPage}&per_page=${pages}`
       );
       const data = await res.json();
       setPosts(data);
       setIsLoading(false);
     };
     getData();
-  }, [pages]);
+  }, [pages, randomPage]);
 
   function SeeMore() {
     setPages(pages + 3);
   }
+
   return (
     <div className={styles.blog_father}>
       <h1 className="font-bold text-2xl ">Blog</h1>
       <div className="flex gap-5 mt-8">
         {blog.map((data) => {
-          return <div>{data.name}</div>;
+          return (
+            <button
+              className="focus:text-[#D4A373] font-semibold"
+              onClick={() => {
+                setRandomPage(randomPage + 9);
+              }}
+            >
+              {data.name}
+            </button>
+          );
         })}
       </div>
 
@@ -43,17 +54,16 @@ export default function Blog() {
           {posts.map((post) => {
             return (
               <div key={post.id}>
-                <BlogCard
-                  title={post.title}
-                  img={post.cover_image}
-                  at={post.published_at}
-                />
+                <Link href={`/${post.id}`}>
+                  <BlogCard
+                    img={post.cover_image}
+                    {...post}
+                    at={post.readable_publish_date}
+                  />
+                </Link>
               </div>
             );
           })}
-          {/* <Link href={`/${post.id}`}>
-            <PostCard {...post} />
-          </Link> */}
         </div>
       )}
       <div className="w-[1216px] flex justify-center m-5 mt-[100px]">

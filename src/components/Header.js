@@ -5,8 +5,10 @@ export const Header = () => {
       <a href="/">
         <img src="/logo.svg" />
       </a>
-      <div className="flex gap-10">
-        <a href="/">Home</a>
+      <div className="flex gap-10 focus:font-semibold">
+        <a href="/" className="font-semibold">
+          Home
+        </a>
         <a href="/blog">Blog</a>
         <a href="/contact">Contact</a>
       </div>
