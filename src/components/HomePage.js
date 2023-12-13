@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <div className="w-screen mb-[100px] ">
-      <div className=" w-[1216px] m-auto h-[650px] relative overflow-hidden  ">
+      <div className="md:block hidden max-w-[1216px] m-auto h-[650px] relative overflow-hidden  ">
         <div
           className="w-[600%] m-auto flex "
           onTransitionStart={() => {
@@ -73,7 +73,7 @@ export default function HomePage() {
               setWithTransition(true);
               setIsOnTransition(true);
             }}
-            className="border-gray-300 border-2  w-10 h-10 rounded-md "
+            className="border-gray-300 border-2  w-10 h-10 rounded-md  active:bg-slate-100"
           >
             <img src="prev.svg" className="m-auto"></img>
           </button>
@@ -84,7 +84,7 @@ export default function HomePage() {
               setWithTransition(true);
               setIsOnTransition(true);
             }}
-            className="border-gray-300 border-2  w-10 h-10 text-gray-300 rounded-md font-black"
+            className="border-gray-300 border-2  w-10 h-10 text-gray-300 rounded-md font-black active:bg-slate-100"
           >
             <img src="next.svg" className="m-auto "></img>
           </button>

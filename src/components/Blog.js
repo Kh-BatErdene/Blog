@@ -1,72 +1,86 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import styles from "@/app/page.module.css";
-import data from "@/components/blog.json";
 import Link from "next/link";
-import PostCard from "@/app/[id]/page";
+import { someContext } from "@/app/layout";
+
+const tag = ["All", "Design", "Travel", "Fashion", "Tecnology", "Branding"];
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pages, setPages] = useState(9);
-  const [randomPage, setRandomPage] = useState(1);
-  const blog = data;
+  let [pages, setPages] = useState(9);
+  const [activeTag, setActiveTag] = useState(tag[1]);
+  const { search, setSearch } = useContext(someContext);
 
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
+
       const res = await fetch(
-        `https://dev.to/api/articles?top=${randomPage}&per_page=${pages}`
+        `https://dev.to/api/articles?top=1000&per_page=${pages}&${
+          activeTag === `All` ? `` : `tag=${activeTag.toLowerCase()}`
+        }`
       );
       const data = await res.json();
       setPosts(data);
       setIsLoading(false);
     };
     getData();
-  }, [pages, randomPage]);
+  }, [pages, activeTag]);
 
   function SeeMore() {
     setPages(pages + 3);
   }
 
   return (
-    <div className={styles.blog_father}>
-      <h1 className="font-bold text-2xl ">Blog</h1>
-      <div className="flex gap-5 mt-8">
-        {blog.map((data) => {
-          return (
-            <button
-              className="focus:text-[#D4A373] font-semibold"
-              onClick={() => {
-                setRandomPage(randomPage + 9);
-              }}
-            >
-              {data.name}
-            </button>
-          );
-        })}
+    <div className="md:max-w-[1216px] max-w-[390px] m-auto ">
+      <div className="max-w-[1216px] ml-3">
+        <h1 className="font-bold text-2xl ">Blog</h1>
+        <div className=" gap-5 mt-8 md:flex hidden">
+          {tag.map((item) => {
+            return (
+              <button
+                className="focus:text-[#D4A373] font-semibold"
+                onClick={() => {
+                  setActiveTag(item);
+                  setPages((pages = 9));
+                }}
+                key={item}
+                style={{
+                  color: item == activeTag ? "#D4A373" : "",
+                  fontWeight: item === activeTag ? "bolder" : "",
+                }}
+              >
+                {item}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
-        <div className={styles.blog_card}>
-          {posts.map((post) => {
-            return (
-              <div key={post.id}>
-                <Link href={`/${post.id}`}>
-                  <BlogCard
-                    img={post.cover_image}
-                    {...post}
-                    at={post.readable_publish_date}
-                  />
-                </Link>
-              </div>
-            );
-          })}
+        <div className="flex flex-wrap gap-[10px] max-w-[1216px] justify-center">
+          {posts
+            .filter((item) => {})
+            .map((post) => {
+              return (
+                <div className="w-[393px] rounded-md  " key={post.id}>
+                  <Link href={`/${post.id}`}>
+                    <BlogCard
+                      img={post.cover_image}
+                      {...post}
+                      at={post.readable_publish_date}
+                    />
+                  </Link>
+                </div>
+              );
+            })}
         </div>
       )}
-      <div className="w-[1216px] flex justify-center m-5 mt-[100px]">
+      <div className="max-w-[1216px] flex justify-center m-5 mt-[100px]">
         <button className={styles.more} onClick={SeeMore}>
           Load more...
         </button>

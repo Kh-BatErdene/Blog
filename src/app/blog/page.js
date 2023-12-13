@@ -26,18 +26,22 @@ export default function Home() {
     setPages(pages + 3);
   }
   return (
-    <div className={styles.blog_father}>
-      <h1 className="font-bold text-2xl ">Blog</h1>
+    <div className="w-[1216px] m-auto">
+      <h1 className="font-bold text-2xl ml-3">Blog</h1>
       <div className="flex gap-5 mt-8"></div>
 
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
-        <div className={styles.blog_card}>
+        <div className="flex flex-wrap justify-center gap-[10px] mb-10">
           {posts.map((post) => {
             return (
               <div key={post.id}>
                 <Link href={`/blog/${post.id}`}>
-                  <PostCard img={post.cover_image} {...post} />
+                  <PostCard
+                    img={post.cover_image}
+                    {...post}
+                    at={post.readable_publish_date}
+                  />
                 </Link>
               </div>
             );

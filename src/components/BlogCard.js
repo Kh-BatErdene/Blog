@@ -4,7 +4,7 @@ import LittleBtn from "./LittleBtn";
 
 function BlogCard(props) {
   return (
-    <div>
+    <div className="w-[393px] rounded-md ">
       <div className={styles.blog}>
         <img className="w-[360px] h-[240px] rounded-md " src={props.img} />
         <LittleBtn />
