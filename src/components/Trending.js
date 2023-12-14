@@ -32,7 +32,7 @@ export default function Trending() {
             {posts.map((post) => {
               return (
                 <div key={post.id}>
-                  <Link href={`/${post.id}`}>
+                  <Link href={`/blog/${post.id}`}>
                     <TrendingCard img={post.cover_image} {...post} />
                   </Link>
                 </div>

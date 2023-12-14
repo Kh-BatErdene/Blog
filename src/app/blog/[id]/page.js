@@ -40,13 +40,13 @@ export default function PostCard() {
       </div>
 
       {post && <img className="w-full rounded-xl" src={post.cover_image} />}
-      {post && (
+      {/* {post && (
         <p className="text-[20px] text-[#3B3C4A] leading-[32px] mt-5 mb-10 w-[1216px] text-justify">
           {post.body_markdown}
         </p>
-      )}
+      )} */}
 
-      {/* {post && <div dangerouslySetInnerHTML={{ __html: post.body_html }}></div>} */}
+      {post && <div dangerouslySetInnerHTML={{ __html: post.body_html }}></div>}
     </div>
   );
 }

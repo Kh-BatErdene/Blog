@@ -21,10 +21,10 @@ export const Footer = () => {
               <a href="/contact">Contact</a>
             </div>
           </div>{" "}
-          <img className="md:m-0 m-auto mt-5" src="Socials.svg" />
+          <img className="md:m-0 m-auto mt-5" src="/Socials.svg" />
         </div>
         <div className="flex md:justify-between justify-center items-center mt-16">
-          <img src="Logo.svg" />
+          <img src="/Logo.svg" />
 
           <div className="md:flex hidden gap-5">
             <p>Terms of Use</p>

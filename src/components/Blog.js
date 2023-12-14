@@ -11,7 +11,7 @@ export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let [pages, setPages] = useState(9);
-  const [activeTag, setActiveTag] = useState(tag[1]);
+  const [activeTag, setActiveTag] = useState(tag[0]);
   const { search, setSearch } = useContext(someContext);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Blog() {
       setIsLoading(true);
 
       const res = await fetch(
-        `https://dev.to/api/articles?top=1000&per_page=${pages}&${
+        `https://dev.to/api/articles?top=10000&per_page=${pages}&${
           activeTag === `All` ? `` : `tag=${activeTag.toLowerCase()}`
         }`
       );
@@ -64,11 +64,11 @@ export default function Blog() {
       {!isLoading && (
         <div className="flex flex-wrap gap-[10px] max-w-[1216px] justify-center">
           {posts
-            .filter((item) => {})
+            .filter((item) => item.title.toLowerCase().includes(search))
             .map((post) => {
               return (
                 <div className="w-[393px] rounded-md  " key={post.id}>
-                  <Link href={`/${post.id}`}>
+                  <Link href={`/blog/${post.id}`}>
                     <BlogCard
                       img={post.cover_image}
                       {...post}

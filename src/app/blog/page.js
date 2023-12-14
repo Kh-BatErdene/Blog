@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import PostCard from "@/components/BlogCard";
+import BlogCard from "@/components/BlogCard";
 import styles from "@/app/page.module.css";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ export default function Home() {
             return (
               <div key={post.id}>
                 <Link href={`/blog/${post.id}`}>
-                  <PostCard
+                  <BlogCard
                     img={post.cover_image}
                     {...post}
                     at={post.readable_publish_date}

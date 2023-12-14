@@ -19,24 +19,26 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="w-screen mb-[100px] ">
-      <div className="md:block hidden max-w-[1216px] m-auto h-[650px] relative overflow-hidden  ">
+    <div
+      onTransitionStart={() => {
+        setIsOnTransition(true);
+      }}
+      onTransitionEnd={() => {
+        if (carouselIndex === 4) {
+          setCarouselIndex(1);
+          setWithTransition(false);
+        }
+        if (carouselIndex === 0) {
+          setCarouselIndex(3);
+          setWithTransition(false);
+        }
+        setIsOnTransition(false);
+      }}
+      className="w-screen mb-[100px] "
+    >
+      <div className="md:block hidden max-w-[1216px] m-auto h-[650px] relative overflow-hidden ">
         <div
           className="w-[600%] m-auto flex "
-          onTransitionStart={() => {
-            setIsOnTransition(true);
-          }}
-          onTransitionEnd={() => {
-            if (carouselIndex === 4) {
-              setCarouselIndex(1);
-              setWithTransition(false);
-            }
-            if (carouselIndex === 0) {
-              setCarouselIndex(3);
-              setWithTransition(false);
-            }
-            setIsOnTransition(false);
-          }}
           style={{
             transform: `translateX(-${(100 * carouselIndex) / 6}%)`,
             transition: withTransition ? "300ms" : "none",
@@ -44,7 +46,7 @@ export default function HomePage() {
         >
           {posts.map((home) => (
             <div key={home.id}>
-              <Link href={`/${home.id}`}>
+              <Link href={`/blog/${home.id}`}>
                 <HomeCard
                   img={home.cover_image}
                   {...home}
@@ -55,7 +57,7 @@ export default function HomePage() {
           ))}
           {posts.map((home) => (
             <div key={home.id}>
-              <Link href={`/${home.id}`}>
+              <Link href={`/blog/${home.id}`}>
                 <HomeCard
                   img={home.cover_image}
                   {...home}

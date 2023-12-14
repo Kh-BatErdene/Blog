@@ -6,7 +6,6 @@ import { useContext } from "react";
 export const Header = () => {
   const { search, setSearch } = useContext(someContext);
 
-  console.log(search);
   return (
     <div className="flex items-center justify-between p-3 m-auto mb-[100px] xl:max-w-[1280px] md:max-w-[840px] max-w-[390px] bg-white drop-shadow-sm ">
       <a href="/">
